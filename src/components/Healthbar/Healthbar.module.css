@@ -1,0 +1,74 @@
+.scoreboard {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.level {
+  display: flex;
+  justify-content: flex-end;
+}
+.background {
+  background-color: #f4fef3;
+  border-radius: 2px;
+  box-shadow: 1px 1px 10px black;
+  /* min-width: 200px; */
+  padding: 2px;
+}
+.foreground {
+  display: flex;
+  background-color: #f4fef3;
+  border: 3px solid #408494;
+  border-radius: 2px;
+  padding: 15px;
+  align-items: center;
+  gap: 15px;
+}
+.hp {
+  display: flex;
+  gap: 5px;
+}
+.maxHealth {
+  background-color: #d9d9d9;
+  height: 20px;
+  min-width: 200px;
+  width: 100%;
+  position: relative;
+}
+.healthShadow {
+  width: 100%;
+  background-color: black;
+  height: 35%;
+  position: absolute;
+  opacity: 0.5;
+}
+.currentHealth {
+  /* background-color: #edb33e; */
+  height: 100%;
+  width: 0%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .useAnimation {
+    animation: shake 0.1s ease;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 0);
+  }
+  25% {
+    transform: translate(-1px, 0);
+  }
+  50% {
+    transform: translate(1px, 0);
+  }
+  75% {
+    transform: translate(-1px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
