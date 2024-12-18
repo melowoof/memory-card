@@ -2,7 +2,7 @@
 
 Memory card game.
 
-## [Demo](link)
+## [Demo](https://memory-card-d5x.pages.dev/)
 
 ![alt text](preview1.jpg)
 ![alt text](preview-game-over.jpg)
