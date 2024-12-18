@@ -4,40 +4,23 @@ import cardStyles from "../Card/Card.module.css";
 import Card from "../Card/Card";
 import { useState, useEffect } from "react";
 import shuffleArray from "../../utils/arrayUtils";
-import { fetchFromArray } from "../../utils/PokeAPI_api";
-import { pokemonNames } from "../../utils/pokemons";
 
-export default function Gameboard({ setMaxScore, setScore }) {
-  const [deck, setDeck] = useState([]);
+export default function Gameboard({ cards, setScore }) {
+  const [deck, setDeck] = useState(cards);
   const [showFront, setShowFront] = useState(false);
   const [visibleDeck, setVisibleDeck] = useState([]);
-  //   const hitDeck = deck.filter((card) => card.isHit);
-  //   const unhitDeck = deck.filter((card) => !card.isHit);
 
   //   console.log("Array length:", deck);
   //   console.log("Hit deck length", hitDeck);
   //   console.log("Unhit deck length", unhitDeck);
 
   useEffect(() => {
-    generateDeck();
-  }, []);
-
-  useEffect(() => {
-    setMaxScore(deck.length);
-  }, [deck, setMaxScore]);
-
-  async function generateDeck() {
-    const url = "https://pokeapi.co/api/v2/pokemon/";
-    // const urlTCG = "https://api.pokemontcg.io/v2/cards?page=2&pageSize=40/";
-    const pokemonsArray = await fetchFromArray(url, pokemonNames);
-    shuffleArray(pokemonsArray);
-    const cards = pokemonsArray.slice(0, 14);
     setDeck(cards);
     setVisibleDeck(shuffleArray(cards).slice(0, 8));
     setTimeout(() => {
       setShowFront(true);
     }, 1000);
-  }
+  }, [cards]);
 
   function getVisibleDeck() {
     const hitDeck = deck.filter((card) => card.isHit);
@@ -48,8 +31,6 @@ export default function Gameboard({ setMaxScore, setScore }) {
       count === 0
         ? Math.floor(Math.random() * count)
         : Math.floor(Math.random() * count) + 1;
-
-    // console.log("count, randomNbr", count, randomNbr);
 
     let smallerArray;
     let largerArray;
@@ -62,12 +43,6 @@ export default function Gameboard({ setMaxScore, setScore }) {
       largerArray = hitDeck;
     }
 
-    // console.log(
-    //   "smallerArray, largerArray",
-    //   smallerArray.length,
-    //   largerArray.length
-    // );
-
     const shuffledSmallArray = shuffleArray(smallerArray, randomNbr).slice(
       0,
       randomNbr
@@ -77,14 +52,7 @@ export default function Gameboard({ setMaxScore, setScore }) {
       8 - shuffledSmallArray.length
     );
 
-    // console.log(
-    //   "shuffledSmallerArray, shuffledLargerArray",
-    //   shuffledSmallArray,
-    //   shuffledLargeArray
-    // );
-
     const combinedCards = [...shuffledSmallArray, ...shuffledLargeArray];
-
     return shuffleArray(combinedCards);
   }
 
