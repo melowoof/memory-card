@@ -4,8 +4,8 @@ Memory card game.
 
 ## [Demo](link)
 
-![alt text](preview1.png)
-![alt text](preview-game-over.png)
+![alt text](preview1.jpg)
+![alt text](preview-game-over.jpg)
 ![alt text](preview-gif.gif)
 
 ## Features
