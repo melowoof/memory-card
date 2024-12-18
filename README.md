@@ -1,8 +1,42 @@
-# React + Vite
+# Memory-card
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Memory card game.
 
-Currently, two official plugins are available:
+## [Demo](link)
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](<Safari_Personal — Vite + React_1219_Z3G7OqhM.gif>)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- Flip cards and memorize checked cards from their unchecked counterparts
+- Keep track of scores and highscores with a health bar stylized scoreboard.
+
+## Tech Stack
+
+- **UI Library**: React
+- **Languages**: JavaScript, HTML, CSS
+- **Build Tool**: Vite
+- **Deployment**: Vite
+- **Dependencies**:
+
+## Main Directories
+
+Located in `components/`
+
+- `Page/`: The main page holding everything together
+- `Card/`: Individual card components
+- `Gameboard/`: Game board component to hold a deck of cards
+- `Healthbar/`: Scoreboard in style of a health bar and levels
+- `Popup/`: Full-screen popup
+- `Button/`: Button component
+
+Located in `utils/`
+
+- `arrayUtils.js`: utility array functions
+- `PokeAPI_api.js`: fetch functions
+- `pokemons.js`: pokemon data
+
+## Acknowledgements
+
+API service used: https://pokeapi.co
