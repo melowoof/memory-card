@@ -1,14 +1,20 @@
 :root {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color: #242424;
-  color: rgba(255, 255, 255, 0.87);
+  /* background-color: #242424; */
+  background-color: #2b4882;
+  /* background-color: #66b187; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+  background-blend-mode: overlay;
   color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
   font-weight: 400;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+  /* height: 100vh; */
 }
 a {
   color: #646cff;
@@ -23,7 +29,7 @@ body {
   margin: 0;
   min-height: 100vh;
   min-width: 320px;
-  place-items: center;
+  /* place-items: center; */
 }
 h1 {
   font-size: 3.2em;
