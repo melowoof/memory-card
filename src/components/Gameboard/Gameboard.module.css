@@ -1,0 +1,17 @@
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* flex-wrap: wrap; */
+  gap: 20px;
+  justify-content: center;
+  /* animation: fadeIn 0.5s ease forwards; */
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(-100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

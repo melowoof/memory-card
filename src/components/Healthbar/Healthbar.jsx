@@ -1,34 +1,42 @@
 /* eslint-disable react/prop-types */
 import styles from "./Healthbar.module.css";
-import H from "../../assets/H.svg";
-import P from "../../assets/P.svg";
+import H from "../../assets/images/H.svg";
+import P from "../../assets/images/P.svg";
 import { useState } from "react";
 
 export default function Healthbar({ maxValue, currentValue }) {
   const [health, setHealth] = useState(currentValue);
   const [useAnimation, setUseAnimation] = useState(false);
+  const [bestScore, setBestScore] = useState(
+    localStorage.getItem("bestScore") ? localStorage.getItem("bestScore") : 0
+  );
+
+  if (currentValue > bestScore) {
+    setBestScore(currentValue);
+    localStorage.setItem("bestScore", currentValue);
+  }
+  // console.log(currentValue, bestScore);
 
   function animation() {
-    setHealth((health + 1) % (maxValue + 1));
-
+    // setHealth((health + 1) % (maxValue + 1));
     setUseAnimation(true);
     setTimeout(() => {
       setUseAnimation(false);
     }, 100);
   }
-  function healthColor(maxValue, currentValue) {
+  function healthColor() {
     const green = "#5abd40";
     const yellow = "#edb33e";
     const red = "#e56245";
-    const health = healthPercentageValue(maxValue, currentValue);
+    const health = healthPercentageValue();
 
     if (health < 33) return red;
     if (health >= 33 && health <= 66) return yellow;
     if (health > 66) return green;
   }
 
-  function healthPercentageValue(maxHealth, currentHealth) {
-    const value = (currentHealth / maxHealth) * 100;
+  function healthPercentageValue() {
+    const value = (currentValue / maxValue) * 100;
     return value;
   }
 
@@ -40,7 +48,8 @@ export default function Healthbar({ maxValue, currentValue }) {
       onClick={animation}
     >
       <div className={styles.level}>
-        <div className={styles.maxLevel}>Lv 18</div>
+        <div className={styles.currentLevel}>Current: Lv {currentValue}</div>
+        <div className={styles.maxLevel}>Best: Lv {bestScore}</div>
       </div>
       <div className={styles.healthBar}>
         <div className={styles.background}>
@@ -54,8 +63,8 @@ export default function Healthbar({ maxValue, currentValue }) {
               <div
                 className={styles.currentHealth}
                 style={{
-                  backgroundColor: healthColor(maxValue, health),
-                  width: `${healthPercentageValue(maxValue, health)}%`,
+                  backgroundColor: healthColor(),
+                  width: `${healthPercentageValue()}%`,
                 }}
               ></div>
             </div>

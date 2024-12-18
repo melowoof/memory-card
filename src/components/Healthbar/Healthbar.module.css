@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Jersey10-Regular";
+  src: url("src/assets/fonts/Jersey10-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .scoreboard {
   user-select: none;
   -webkit-user-select: none; /* Safari */
@@ -8,11 +15,28 @@
 .level {
   display: flex;
   justify-content: flex-end;
+  gap: 1.5rem;
+  align-items: flex-end;
+  /* outline: 1px solid red; */
+}
+.currentLevel {
+  /* background-color: red; */
+  font-family: "Jersey10-Regular", sans-serif;
+  font-size: 2.2rem;
+  display: flex;
+  align-items: flex-end;
+  opacity: 0.7;
+}
+.maxLevel {
+  /* background-color: red; */
+  font-family: "Jersey10-Regular", sans-serif;
+  font-size: 2.2rem;
 }
 .background {
   background-color: #f4fef3;
   border-radius: 2px;
-  box-shadow: 1px 1px 10px black;
+  /* box-shadow: 1px 1px 10px black; */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), 0 15px 40px rgba(0, 0, 0, 0.05);
   /* min-width: 200px; */
   padding: 2px;
 }

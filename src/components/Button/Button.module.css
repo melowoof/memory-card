@@ -2,15 +2,16 @@
   background: linear-gradient(to right, #addba3, #64caaa);
   padding: 0;
   width: fit-content;
-  color: black;
+  color: white;
   font-weight: 200;
   font-size: 2rem;
   border-radius: 50px;
-  box-shadow: 1px 1px 10px black;
+  /* box-shadow: 1px 1px 10px black; */
   user-select: none;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
+  transition: transform 0.1s ease, border 0.15s ease;
 }
 .background {
   padding: 2px;
@@ -21,7 +22,11 @@
   border-radius: inherit;
   padding: 10px 40px;
 }
+.button:hover {
+  transition: border 0.15s ease;
+}
 .button:active {
   /* box-shadow: inset 1px 1px 10px black; */
   transform: translate(0, 1px);
+  transition: transform 0.1s ease;
 }

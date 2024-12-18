@@ -1,0 +1,61 @@
+.card {
+  --card-border-radius: 12px;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  border-radius: var(--card-border-radius);
+  height: 270px;
+  perspective: 5000px;
+  user-select: none;
+  width: 200px;
+  cursor: pointer;
+}
+.cardInner {
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s;
+  width: 100%;
+}
+.card.showFront .cardInner {
+  transform: rotateY(180deg);
+}
+.cardFront,
+.cardBack {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 3px 10px rgb(0, 0, 0, 0.5);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.cardFront {
+  background: linear-gradient(
+    190deg,
+    #f7cd46,
+    #e6d9a0,
+    #f7cd46,
+    #efd373,
+    #f7cd46
+  );
+  /* border-radius: var(--card-border-radius); */
+}
+.cardFrontImage {
+  box-sizing: border-box;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+}
+.cardBack {
+  transform: rotateY(180deg);
+}
+.card img {
+  border-radius: var(--card-border-radius);
+  display: block;
+  height: 100%;
+  width: 100%;
+}
