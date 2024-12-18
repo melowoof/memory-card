@@ -5,7 +5,11 @@ import Card from "../Card/Card";
 import { useState, useEffect } from "react";
 import shuffleArray from "../../utils/arrayUtils";
 
-export default function Gameboard({ cards, setScore }) {
+export default function Gameboard({
+  cards,
+  handleScore,
+  setGameOver,
+}) {
   const [deck, setDeck] = useState(cards);
   const [showFront, setShowFront] = useState(false);
   const [visibleDeck, setVisibleDeck] = useState([]);
@@ -15,6 +19,9 @@ export default function Gameboard({ cards, setScore }) {
   //   console.log("Unhit deck length", unhitDeck);
 
   useEffect(() => {
+    setTimeout(() => {
+      setShowFront(false);
+    }, 0);
     setDeck(cards);
     setVisibleDeck(shuffleArray(cards).slice(0, 8));
     setTimeout(() => {
@@ -63,21 +70,16 @@ export default function Gameboard({ cards, setScore }) {
     }, 300);
   }
 
-  function isGameOver(isHit) {
-    if (isHit) {
-      return true;
-    }
-    return false;
-  }
-
   function handleClick(card) {
-    if (isGameOver(card.isHit)) {
+    if (card.isHit) {
       console.log("Game over");
+      setGameOver(-1);
     } else {
       card.hit();
-      setScore();
+      handleScore();
       shuffleDeck();
     }
+
     setTimeout(() => {
       setShowFront(true);
     }, 500);
@@ -95,7 +97,7 @@ export default function Gameboard({ cards, setScore }) {
           >
             <Card
               id={card.id}
-              name={`${card.isHit}`}
+              name={card.name}
               type={card.type}
               imgSrc={card.imgSrc}
               onClick={() => {
