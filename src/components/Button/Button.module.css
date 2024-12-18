@@ -23,6 +23,7 @@
   padding: 10px 40px;
 }
 .button:hover {
+  border-color: #66b187;
   transition: border 0.15s ease;
 }
 .button:active {
