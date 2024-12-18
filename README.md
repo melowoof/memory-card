@@ -3,9 +3,10 @@
 Memory card game.
 
 ## [Demo](link)
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](<Safari_Personal — Vite + React_1219_Z3G7OqhM.gif>)
+
+![alt text](preview1.png)
+![alt text](preview-game-over.png)
+![alt text](preview-gif.gif)
 
 ## Features
 
