@@ -2,20 +2,23 @@
 import styles from "./Healthbar.module.css";
 import H from "../../assets/images/H.svg";
 import P from "../../assets/images/P.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Healthbar({ maxValue, currentValue }) {
-  const [health, setHealth] = useState(currentValue);
+  // const [health, setHealth] = useState(currentValue);
   const [useAnimation, setUseAnimation] = useState(false);
   const [bestScore, setBestScore] = useState(
     localStorage.getItem("bestScore") ? localStorage.getItem("bestScore") : 0
   );
+  
+  useEffect(() => {
+    animation();
+  }, [currentValue])
 
   if (currentValue > bestScore) {
     setBestScore(currentValue);
     localStorage.setItem("bestScore", currentValue);
   }
-  // console.log(currentValue, bestScore);
 
   function animation() {
     // setHealth((health + 1) % (maxValue + 1));
