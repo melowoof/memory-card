@@ -11,30 +11,39 @@ import electricBg from "../../assets/images/card_backgrounds/lightning.webp";
 import steelBg from "../../assets/images/card_backgrounds/metal_modern.webp";
 import psychicBg from "../../assets/images/card_backgrounds/psychic.webp";
 import waterBg from "../../assets/images/card_backgrounds/water.webp";
+import { useMemo } from "react";
 // import { useState } from "react";
 
+const backgroundImages = {
+  normal: normalBg,
+  fire: fireBg,
+  dark: darkBg,
+  dragon: dragonBg,
+  fighting: fightingBg,
+  grass: grassBg,
+  electric: electricBg,
+  steel: steelBg,
+  psychic: psychicBg,
+  water: waterBg,
+};
+
 export default function Card({ name, type, imgSrc, onClick }) {
-  //   const [showFront, setFlipped] = useState(flipped);
+  const backgroundImage = useMemo(() => {
+    return backgroundImages[type] || normalBg;
+  }, [type]);
 
-  //   function flipCard() {
-  //     setFlipped(true);
-  //     setTimeout(() => {
-  //       setFlipped(false);
-  //     }, 500);
+  //   function getBackground(type) {
+  //     if (type === "normal") return normalBg;
+  //     if (type === "fire") return fireBg;
+  //     if (type === "dark") return darkBg;
+  //     if (type === "dragon") return dragonBg;
+  //     if (type === "fighting") return fightingBg;
+  //     if (type === "grass") return grassBg;
+  //     if (type === "electric") return electricBg;
+  //     if (type === "steel") return steelBg;
+  //     if (type === "psychic") return psychicBg;
+  //     if (type === "water") return waterBg;
   //   }
-
-  function getBackground(type) {
-    if (type === "normal") return normalBg;
-    if (type === "fire") return fireBg;
-    if (type === "dark") return darkBg;
-    if (type === "dragon") return dragonBg;
-    if (type === "fighting") return fightingBg;
-    if (type === "grass") return grassBg;
-    if (type === "electric") return electricBg;
-    if (type === "steel") return steelBg;
-    if (type === "psychic") return psychicBg;
-    if (type === "water") return waterBg;
-  }
 
   return (
     <div className={`${styles.card} `} onClick={onClick}>
@@ -43,7 +52,7 @@ export default function Card({ name, type, imgSrc, onClick }) {
           <div className={styles.cardFrontImage}>
             <div className={styles.pokemonBg}>
               <img
-                src={getBackground(type)}
+                src={backgroundImage}
                 draggable={false}
                 width={200}
                 height={270}
