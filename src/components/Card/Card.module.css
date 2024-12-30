@@ -1,13 +1,11 @@
 .card {
   --card-border-radius: 12px;
   -webkit-user-select: none;
-  /* Firefox */
   -ms-user-select: none;
-  /* Safari */
   -moz-user-select: none;
   border-radius: var(--card-border-radius);
   height: 270px;
-  /* perspective: 5000px; */
+  perspective: 5000px;
   user-select: none;
   width: 200px;
   cursor: pointer;
