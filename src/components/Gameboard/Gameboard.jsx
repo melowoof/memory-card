@@ -16,16 +16,16 @@ export default function Gameboard({ cards, handleScore, setGameOver }) {
   //   console.log("Hit deck length", hitDeck);
   //   console.log("Unhit deck length", unhitDeck);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setShowFront(false);
-  //   }, 0);
-  //   setDeck(cards);
-  //   setVisibleDeck(shuffleArray(cards).slice(0, 8));
-  //   setTimeout(() => {
-  //     setShowFront(true);
-  //   }, 1000);
-  // }, [cards]);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowFront(false);
+    }, 0);
+    setDeck(cards);
+    setVisibleDeck(shuffleArray(cards).slice(0, 8));
+    setTimeout(() => {
+      setShowFront(true);
+    }, 1000);
+  }, [cards]);
 
   function getVisibleDeck() {
     const hitDeck = deck.filter((card) => card.isHit);
