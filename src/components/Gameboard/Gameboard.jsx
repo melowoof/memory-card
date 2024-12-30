@@ -5,29 +5,27 @@ import Card from "../Card/Card";
 import { useState, useEffect } from "react";
 import shuffleArray from "../../utils/arrayUtils";
 
-export default function Gameboard({
-  cards,
-  handleScore,
-  setGameOver,
-}) {
+export default function Gameboard({ cards, handleScore, setGameOver }) {
   const [deck, setDeck] = useState(cards);
   const [showFront, setShowFront] = useState(false);
   const [visibleDeck, setVisibleDeck] = useState([]);
+
+  console.log(cards.length);
 
   //   console.log("Array length:", deck);
   //   console.log("Hit deck length", hitDeck);
   //   console.log("Unhit deck length", unhitDeck);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowFront(false);
-    }, 0);
-    setDeck(cards);
-    setVisibleDeck(shuffleArray(cards).slice(0, 8));
-    setTimeout(() => {
-      setShowFront(true);
-    }, 1000);
-  }, [cards]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setShowFront(false);
+  //   }, 0);
+  //   setDeck(cards);
+  //   setVisibleDeck(shuffleArray(cards).slice(0, 8));
+  //   setTimeout(() => {
+  //     setShowFront(true);
+  //   }, 1000);
+  // }, [cards]);
 
   function getVisibleDeck() {
     const hitDeck = deck.filter((card) => card.isHit);
@@ -87,26 +85,32 @@ export default function Gameboard({
 
   return (
     <div className={styles.gameboard}>
-      {visibleDeck.map((card) => {
-        return (
-          <div
-            key={card.id}
-            className={`${cardStyles.card} ${
-              showFront ? "" : cardStyles.showFront
-            }`}
-          >
-            <Card
-              id={card.id}
-              name={card.name}
-              type={card.type}
-              imgSrc={card.imgSrc}
-              onClick={() => {
-                handleClick(card);
-              }}
-            />
-          </div>
-        );
-      })}
+      {(deck.length === 0 && (
+        <div className={styles.loading}>Preparing cards...</div>
+      )) || (
+        <div className={styles.deck}>
+          {visibleDeck.map((card) => {
+            return (
+              <div
+                key={card.id}
+                className={`${cardStyles.card} ${
+                  showFront ? "" : cardStyles.showFront
+                }`}
+              >
+                <Card
+                  id={card.id}
+                  name={card.name}
+                  type={card.type}
+                  imgSrc={card.imgSrc}
+                  onClick={() => {
+                    handleClick(card);
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
