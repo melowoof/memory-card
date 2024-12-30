@@ -86,7 +86,9 @@ export default function Gameboard({ cards, handleScore, setGameOver }) {
   return (
     <div className={styles.gameboard}>
       {(deck.length === 0 && (
-        <div className={styles.loading}>Preparing cards...</div>
+        <div className={styles.loading}>
+          <p className={styles.loadingText}>Preparing cards...</p>
+        </div>
       )) || (
         <div className={styles.deck}>
           {visibleDeck.map((card) => {

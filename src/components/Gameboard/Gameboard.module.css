@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: calc(200px * 4);
+  min-height: calc(270px * 2);
 }
 
 .deck {
@@ -13,9 +15,24 @@
 }
 
 .loading {
-  /* background-color: blue; */
+  animation: loading 3s linear infinite;
+  background-image: linear-gradient(
+    to right,
+    rgba(140, 140, 140, 0.05) 0%,
+    rgba(140, 140, 140, 0.1) 15%,
+    rgba(140, 140, 140, 0.05) 30%
+  );
+  background-size: 1200px 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading .loadingText {
   font-size: 1.5rem;
-  animation: shimmer 1s infinite alternate;
+  animation: stretchX 1s infinite alternate;
 }
 
 @keyframes slideUp {
@@ -27,11 +44,20 @@
   }
 }
 
-@keyframes shimmer {
+@keyframes stretchX {
   0% {
-    transform: scaleX(1.1);
+    transform: scaleX(1.05);
   }
   100% {
-    transform: scaleX(0.9);
+    transform: scaleX(0.95);
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
   }
 }
