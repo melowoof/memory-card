@@ -4,7 +4,7 @@ import Page from "./components/Page/Page.jsx";
 function App() {
   return (
     <>
-      <div className="w-screen h-[100vh]">
+      <div className="w-screen h-[100vh] sticky">
         <div className="top-0 bg-red-200">
           outside
           <div className="w-screen h-screen static bg-green-200">
