@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <div className="mainContainer">
-        <div className="top-0 bg-red-200">
+        <div className="secondContainer">
           outside
           <div className="w-screen h-screen static bg-green-200">
             <div>inside * 2</div>inside
